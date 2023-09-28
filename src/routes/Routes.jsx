@@ -15,8 +15,5 @@ export const router = createBrowserRouter([
     {
         path: "leaderboard",
         element: <LeaderBoard />
-    },
-    {
-        path: "score"
     }
 ]);

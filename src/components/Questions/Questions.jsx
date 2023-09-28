@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
@@ -10,9 +10,19 @@ const Questions = ({ setIsQuestionsEnded, correctAnswers, setCorrectAnswers, inC
     const { data: quizzes = [] } = useQuery({
         queryKey: ["quizzes", category],
         queryFn: async () => {
+            if (category === 'space') {
+                const response = await axios.get('https://opentdb.com/api.php?amount=20&category=17&difficulty=easy&type=multiple');
+                // console.log(response?.data?.results);
+                return response?.data?.results;
+            }
             if (category === 'history') {
-                const response = await axios.get('https://opentdb.com/api.php?amount=5&category=23&difficulty=easy&type=multiple');
-                console.log(response?.data?.results);
+                const response = await axios.get('https://opentdb.com/api.php?amount=20&category=23&difficulty=easy&type=multiple');
+                // console.log(response?.data?.results);
+                return response?.data?.results;
+            }
+            if (category === 'sports') {
+                const response = await axios.get('https://opentdb.com/api.php?amount=20&category=21&difficulty=easy&type=multiple');
+                // console.log(response?.data?.results);
                 return response?.data?.results;
             }
         }
@@ -34,21 +44,23 @@ const Questions = ({ setIsQuestionsEnded, correctAnswers, setCorrectAnswers, inC
     const timer = useRef();
     const currentTimer = useRef();
 
-    const goToNextQuestion = () => {
-        if (timer.current) {
-            clearTimeout(timer.current);
-        }
+    const goToNextQuestion = useCallback(
+        () => {
+            if (timer.current) {
+                clearTimeout(timer.current);
+            }
 
-        if (currentIndex === 4) {
-            return setIsQuestionsEnded(true);
-        }
-        setCurrentIndex(currentIndex + 1);
-        setSelectedOption(null);
-    }
+            if (currentIndex === 19) {
+                setIsQuestionsEnded(true);
+            }
+            setCurrentIndex(currentIndex + 1);
+            setSelectedOption(null);
+        }, [currentIndex, setIsQuestionsEnded])
 
     useEffect(() => {
         timer.current = setTimeout(goToNextQuestion, 20 * 1000);
-    }, [currentIndex]);
+        // return goToNextQuestion;
+    }, [currentIndex, goToNextQuestion]);
 
     const changeTheTimer = () => {
         if (currentTimer.current) {
@@ -63,7 +75,7 @@ const Questions = ({ setIsQuestionsEnded, correctAnswers, setCorrectAnswers, inC
     }
 
     useEffect(() => {
-        if(resetIt === true) {
+        if (resetIt === true) {
             setCurrentTime(20);
             setResetIt(false);
         }
@@ -95,7 +107,7 @@ const Questions = ({ setIsQuestionsEnded, correctAnswers, setCorrectAnswers, inC
                                 <path d="M57 28.5C57 44.2401 44.2401 57 28.5 57C12.7599 57 0 44.2401 0 28.5C10 28.5 28.5 20 28.5 0C44.2401 0 57 12.7599 57 28.5Z" fill="#FEB005" />
                             </svg>
                             <div className="absolute bg-white w-[49px] h-[49px] rounded-full flex justify-center items-center">
-                                {currentTime}
+                                <h4 className="text-[#FEB005] text-[20px] font-bold">{currentTime}</h4>
                             </div>
                         </div>
                     </div>
@@ -109,7 +121,7 @@ const Questions = ({ setIsQuestionsEnded, correctAnswers, setCorrectAnswers, inC
                 <h4 className="text-center text-[#FFC000] text-sm font-medium mb-8">Question {currentIndex + 1}/20</h4>
                 <h4 className="text-[#2B262D] font-medium px-8 text-center pb-6">{quizzes[currentIndex]?.question}</h4>
             </div>
-            <div className="mx-[48px] space-y-5">
+            <div className="relative -top-10 mx-[48px] space-y-5">
                 {
                     questionOptions.map((option, index) => {
                         return (
@@ -126,9 +138,11 @@ const Questions = ({ setIsQuestionsEnded, correctAnswers, setCorrectAnswers, inC
                                     className="flex cursor-pointer items-center justify-between rounded-lg border-2 border-[#FFB504] bg-white p-4 text-sm font-medium shadow-sm"
                                     onClick={() => {
                                         setSelectedOption(index);
-                                        calculateResult(index, quizzes[currentIndex]?.correct_answer);
+                                        setTimeout(() => {
+                                            calculateResult(index, quizzes[currentIndex]?.correct_answer);
                                         setResetIt(true);
                                         goToNextQuestion();
+                                        }, 2000)
                                     }}
                                 >
                                     <div className="w-full flex justify-between items-center">

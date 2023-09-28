@@ -3,10 +3,10 @@ import groupImg from '../../assets/img/Group 1171275902.png';
 
 const QuizResult = ({ correctAnswers, inCorrectAnswers }) => {
     return (
-        <div>
+        <div className="md:max-w-4xl mx-auto">
             <div className="h-[334px] bg-[#FFC102] rounded-[30px]">
-                <div className="absolute">
-                    <img src={groupImg} alt="group" className="mix-blend-soft-light" />
+                <div className="md:hidden absolute w-full flex justify-center items-center">
+                    <img src={groupImg} alt="group" className="mix-blend-soft-light w-full" />
                 </div>
                 <div className="px-[18px] flex justify-between items-center pt-[30px]">
                     <div className="p-[5px]">
@@ -15,16 +15,18 @@ const QuizResult = ({ correctAnswers, inCorrectAnswers }) => {
                         </svg>
                     </div>
                 </div>
-                <div className="w-[139px] h-[139px] bg-[#FFFFFF4D] mx-[100px] mt-[40px] rounded-full flex justify-center items-center">
-                    <div className="w-[116px] h-[116px] bg-white rounded-full text-center flex flex-col justify-center items-center">
-                        <p className="text-[#FFAD00] text-xl font-medium">your Score</p>
-                        <h4 className="text-[#FFAD00] text-[32px] font-bold">100 <span className="text-[20px] font-medium">pt</span></h4>
+                <div className="text-center flex justify-center items-center">
+                    <div className="w-[139px] h-[139px] bg-[#FFFFFF4D] mx-[100px] mt-[40px] rounded-full flex justify-center items-center">
+                        <div className="w-[116px] h-[116px] bg-white rounded-full text-center flex flex-col justify-center items-center">
+                            <p className="text-[#FFAD00] text-xl font-medium">your Score</p>
+                            <h4 className="text-[#FFAD00] text-[32px] font-bold">100 <span className="text-[20px] font-medium">pt</span></h4>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="min-h-[149px] mx-4 bg-white rounded-[22px] relative -top-14" style={{ boxShadow: "0px 6px 19px 0px rgba(0, 0, 0, 0.12)" }}>
                 <div className="pt-6 pb-[10px] space-y-[27px]">
-                    <div className="ml-3 mr-1 flex justify-between items-start pt-6">
+                    <div className="ml-3 mr-1 flex justify-between items-start pt-6 md:justify-center md:gap-36">
                         <div className="flex justify-center items-start gap-[8px]">
                             <div className="w-3 h-3 bg-[#FFC102] rounded-full mt-2"></div>
                             <div>
@@ -40,7 +42,7 @@ const QuizResult = ({ correctAnswers, inCorrectAnswers }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="ml-3 mr-[60px] flex justify-between items-start">
+                    <div className="ml-3 mr-[60px] flex justify-between items-start md:justify-center md:gap-44">
                         <div className="flex justify-center items-start gap-[8px]">
                             <div className="w-3 h-3 bg-[#1F8435] rounded-full mt-2"></div>
                             <div>

@@ -8,10 +8,10 @@ import PositionList from '../../components/PostionList/PositionList';
 
 const LeaderBoard = () => {
     return (
-        <div className="bg-gray-100">
+        <div className="max-w-4xl mx-auto">
             <div className="h-[360px] bg-[#FFC102] rounded-t-[30px]">
-                <div className="absolute">
-                    <img src={groupImg} alt="group" className="mix-blend-soft-light" />
+                <div className="md:hidden absolute w-full flex justify-center items-center">
+                    <img src={groupImg} alt="group" className="mix-blend-soft-light w-full" />
                 </div>
                 <div className="px-[18px] flex justify-between items-center pt-[30px]">
                     <div className="p-[5px]">
@@ -30,7 +30,7 @@ const LeaderBoard = () => {
                         <h4 className="text-white text-xl leading-normal">All Times</h4>
                     </div>
                 </div>
-                <div className="ml-[27px] mr-[12px] mt-[10px] flex justify-center items-end">
+                <div className="ml-[27px] mr-[12px] mt-[10px] flex justify-center items-end md:relative">
                     <div className="absolute left-[24px]">
                         <div className="text-center mx-5 mb-2">
                             <img src={user2Img} alt="user" />

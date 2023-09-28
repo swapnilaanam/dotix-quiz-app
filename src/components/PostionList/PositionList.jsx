@@ -64,7 +64,7 @@ const PositionList = () => {
                     <div className="ml-[22px] mr-[29px]">
                         <img src={user18Img} alt="user" />
                     </div>
-                    <h4 className="text-[#2B262D]">Sam</h4>
+                    <h4 className="text-[#2B262D]"></h4>
                 </div>
                 <div className="bg-[#FFC10299] rounded-[20px] text-[#2B262D] text-[15px] pl-[11px] pr-[9px] pt-1 pb-[1px]">
                     120pt

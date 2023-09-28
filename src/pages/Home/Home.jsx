@@ -5,10 +5,10 @@ import Category from '../../components/Category/Category';
 
 const Home = () => {
     return (
-        <div className="bg-[#FFF]">
+        <div className="md:max-w-4xl mx-auto">
             <div className="h-[270px] bg-[#FFC102] rounded-[30px]">
-                <div className="absolute">
-                    <img src={groupImg} alt="group" className="mix-blend-soft-light" />
+                <div className="md:hidden absolute w-full flex justify-center items-center">
+                    <img src={groupImg} alt="group" className="mix-blend-soft-light w-full" />
                 </div>
                 <div className="px-[18px] flex justify-between items-center pt-[30px]">
                     <div className="p-[5px]">
@@ -21,9 +21,9 @@ const Home = () => {
                         <img src={profileImg} alt="profile pic" />
                     </div>
                 </div>
-                <div className="px-[22px] mt-[30px]">
+                <div className="px-[22px] mt-[30px] md:flex md:flex-col md:justify-center md:items-center">
                     <h2 className="text-[15px] font-semibold text-white mb-5">Popular</h2>
-                    <div className="flex gap-[10px]">
+                    <div className="flex gap-[10px] md:gap-8">
                         <Link to="/quiz/space" className="w-[91px] h-[100px] bg-white rounded-[10px]">
                             <h4 className="text-[#444] text-[15px] font-medium ps-[10px] pt-[8px] mb-3">Space</h4>
                             <div className="flex justify-center items-center">
@@ -58,11 +58,11 @@ const Home = () => {
                 </div>
             </div>
             <div className="mb-[37px] mt-5">
-                <div className="flex justify-between items-center mx-[22px]">
+                <div className="flex justify-between md:justify-center items-center mx-[22px] md:gap-[350px]">
                     <h4 className="text-[#373737] text-[15px] font-semibold">Explore</h4>
                     <Link href="/" className="text-[#373737] text-xs font-medium">View All</Link>
                 </div>
-                <div className="flex flex-col items-center mt-[10px] gap-[10px]">
+                <div className="flex flex-col items-center justify-center mt-[10px] gap-[10px] md:gap-8">
                     <Category />
                     <Category />
                     <Category />
