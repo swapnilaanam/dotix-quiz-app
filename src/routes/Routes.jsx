@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import LeaderBoard from "../pages/LeaderBoard/LeaderBoard";
+import Quiz from "../pages/Quiz/Quiz";
 
 export const router = createBrowserRouter([
     {
@@ -8,7 +9,8 @@ export const router = createBrowserRouter([
         element: <Home />,
     },
     {
-        path: "quiz"
+        path: "quiz/:category",
+        element: <Quiz />
     },
     {
         path: "leaderboard",
